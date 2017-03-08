@@ -2,7 +2,8 @@
   "name": "AnimationOnScroll",
   "license": "MIT",
   "scripts": {
-    "start": "open 'index.html' && babel --watch=./app --out-dir=./dist"
+    "start": "open 'index.html' && babel --watch=./app --out-dir=./dist",
+    "dev": "babel --watch=./app --out-dir=./dist"
   },
   "babel": {
     "plugins": [
