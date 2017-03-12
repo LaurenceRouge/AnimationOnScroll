@@ -3,25 +3,27 @@
 const elements = [
   {
     targets: '#container-1 #block-1',
-    animation: 'scale',
+    animation: 'slideDown',
     options: {
-      scale: 1.5,
+      translate: 50,
     },
   },
   {
     targets: '#container-2 #block-2',
     animation: 'fadeIn',
     options: {
-      offset: 700,
       delay: 450,
+      offset: 700,
+      opacity: 0.2,
     },
   },
   {
     targets: '#container-2 #block-3',
     animation: 'fadeIn',
     options: {
-      offset: 700,
       delay: 450,
+      offset: 700,
+      opacity: 0.3,
     },
   },
 ]
