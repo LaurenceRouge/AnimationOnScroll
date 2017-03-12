@@ -25,10 +25,9 @@
 
 #block-2 {
     opacity: 0;
-    animation-duration: 1s;
-    animation-delay: .5s;
 }
 
-#block-3 {opacity: 0;
-    animation-delay: 1s;
+#block-3,
+#block-4 {
+    opacity: 0;
 }

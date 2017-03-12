@@ -7,43 +7,44 @@ type AnimationOpacity = 'fadeIn' | 'fadeOut'
 type AnimationOptions = null | {
   delay?: number,
   duration?: number,
-  opacity?: number,
+  easing?: string,
   offset?: 'bottom-in-view' | number | string | Function,
+  opacity?: number,
   scale?: number,
   translateX?: number,
 }
 
 const getFadeOptions = (animation: AnimationOpacity, targets: string, options: AnimationOptions) => {
-  const { delay, duration, offset, opacity: opacityValue } = options
+  const { delay, duration, easing, offset, opacity: opacityValue } = options
   const defaultOpacity = Number(animation === 'fadeIn')
   return {
     targets,
     opacity: opacityValue || defaultOpacity,
-    easing: 'linear',
+    easing: easing || 'linear',
     duration: duration || 300,
     delay: delay || 0,
   }
 }
 
 const getSlideOptions = (direction: AnimationDirections, targets: string, options: AnimationOptions) => {
-  const { delay, duration, offset, translate } = options
+  const { delay, duration, easing, offset, translate } = options
   const translateValue = direction === 'slideLeft' | direction === 'slideUp' ? -translate : translate
   return {
     targets,
     translateX: direction === 'slideLeft' || direction === 'slideRight' ? translateValue : 0,
     translateY: direction === 'slideUp' || direction === 'slideDown' ? translateValue : 0,
-    easing: 'linear',
+    easing: easing || 'linear',
     duration: duration || 300,
     delay: delay || 0,
   }
 }
 
 const getScaleOptions = (targets: string, options: AnimationOptions) => {
-  const { delay, duration, offset, scale: scaleValue } = options
+  const { delay, duration, easing, offset, scale: scaleValue } = options
   return {
     targets,
     scale: scaleValue || 1.2,
-    easing: 'linear',
+    easing: easing || 'linear',
     duration: duration || 300,
     delay: delay || 0,
   }

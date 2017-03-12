@@ -5,7 +5,9 @@ const elements = [
     targets: '#container-1 #block-1',
     animation: 'slideDown',
     options: {
-      translate: 50,
+      duration: 1000,
+      easing: 'easeOutSine',
+      translate: 25,
     },
   },
   {
@@ -13,8 +15,9 @@ const elements = [
     animation: 'fadeIn',
     options: {
       delay: 450,
+      duration: 1000,
+      easing: 'easeInQuad',
       offset: 700,
-      opacity: 0.2,
     },
   },
   {
@@ -22,8 +25,20 @@ const elements = [
     animation: 'fadeIn',
     options: {
       delay: 450,
+      duration: 1500,
+      easing: 'easeInQuart',
       offset: 700,
-      opacity: 0.3,
+    },
+  },
+  {
+    targets: '#container-2 #block-4',
+    animation: 'fadeIn',
+    options: {
+      delay: 450,
+      duration: 1750,
+      easing: 'easeInQuart',
+      offset: 700,
+      opacity: 0.5,
     },
   },
 ]

@@ -3,17 +3,17 @@
 type AnimationOptions = null | {
   delay?: number,
   duration?: number,
+  easing?: string,
   offset?: 'bottom-in-view' | number | string | Function,
   opacity?: number,
   scale?: number,
-  translate?: number,
+  translateX?: number,
 }
 
 type AnimationType = 'fadeIn' | 'fadeOut' | 'slideLeft' | 'slideRight' | 'scale'
 
 class Amazination {
   renderAnimation(elements: string, animation: AnimationType, options: AnimationOptions) {
-    const { opacity, scale, translateX } = options
     switch (animation) {
       case 'fadeIn':
       case 'fadeOut':
