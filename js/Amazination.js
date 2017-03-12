@@ -13,7 +13,21 @@ type AnimationType = 'fadeIn' | 'fadeOut' | 'slideLeft' | 'slideRight' | 'scale'
 
 class Amazination {
   renderAnimation(elements: string, animation: AnimationType, options: AnimationOptions) {
-    return anime(getAnimationOptions(elements, animation, options))
+    const { opacity, scale, translateX } = options
+    switch (animation) {
+      case 'fadeIn':
+        return anime(getFadeOptions(opacity || 1, elements, options))
+      case 'fadeOut':
+        return anime(getFadeOptions(opacity || 0, elements, options))
+      case 'scale':
+        return anime(getScaleOptions(scale || 1.2, elements, options))
+      case 'slideLeft':
+        return anime(getSlideOptions(-translateX, elements, options))
+      case 'slideRight':
+        return anime(getSlideOptions(translateX, elements, options))
+      default:
+        return false
+    }
   }
 
   run(elements: string, animation: AnimationType, options: AnimationOptions) {
@@ -25,11 +39,3 @@ class Amazination {
     })
   }
 }
-
-// @TODO:
-// - Split getAnimationOptions() into smaller helpers (getScaleOptions, getSlideOptions, getFadeOptions, etc)
-// - Handle every options
-// - Add 'easing' as an option
-// - Migrate from translateX to translate(x,y) (for 'slideTop' and 'slideDown')
-// - Handle animations composition
-// - Implement Amazination.timeline()

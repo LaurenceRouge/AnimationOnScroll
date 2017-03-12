@@ -9,39 +9,35 @@ type AnimationOptions = null | {
   translateX?: number,
 }
 
-type AnimationType = 'fadeIn' | 'fadeOut' | 'slideLeft' | 'slideRight' | 'scale'
+const getFadeOptions = (opacity: number, targets: string, options: AnimationOptions) => {
+  const { delay, duration, offset } = options
+  return {
+    targets,
+    opacity,
+    easing: 'linear',
+    duration: duration || 300,
+    delay: delay || 0,
+  }
+}
 
-const getAnimationOptions = (targets: string, animation: AnimationType, options: AnimationOptions) => {
-  const { delay, duration, opacity, offset, scale, translateX } = options
+const getSlideOptions = (translateX: number, targets: string, options: AnimationOptions) => {
+  const { delay, duration, offset } = options
+  return {
+    targets,
+    translateX,
+    easing: 'linear',
+    duration: duration || 300,
+    delay: delay || 0,
+  }
+}
 
-  switch (animation) {
-    case 'scale':
-      return {
-        targets,
-        scale,
-        easing: 'linear',
-        duration: duration || 300,
-        delay: delay || 0,
-      }
-    case 'fadeIn':
-    case 'fadeOut':
-      return {
-        targets,
-        opacity: Number(animation === 'fadeIn'),
-        easing: 'linear',
-        duration: duration || 300,
-        delay: delay || 0,
-      }
-    case 'slideLeft':
-    case 'slideRight':
-      return {
-        targets,
-        translateX: animation === 'slideLeft' ? -translateX : translateX,
-        easing: 'linear',
-        duration: duration || 300,
-        delay: delay || 0,
-      }
-    default:
-      return false
+const getScaleOptions = (scale: number, targets: string, options: AnimationOptions) => {
+  const { delay, duration, offset } = options
+  return {
+    targets,
+    scale,
+    easing: 'linear',
+    duration: duration || 300,
+    delay: delay || 0,
   }
 }
