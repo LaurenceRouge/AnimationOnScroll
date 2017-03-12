@@ -25,7 +25,7 @@ const elements = [
     animation: 'fadeIn',
     options: {
       delay: 450,
-      duration: 1500,
+      duration: 1350,
       easing: 'easeInQuart',
       offset: 700,
     },
@@ -35,10 +35,9 @@ const elements = [
     animation: 'fadeIn',
     options: {
       delay: 450,
-      duration: 1750,
+      duration: 1500,
       easing: 'easeInQuart',
       offset: 700,
-      opacity: 0.5,
     },
   },
 ]

@@ -6,7 +6,7 @@
 #block-1 {
     width: 200px;
     padding: 10px;
-    font-family: Helvetica;
+    font-family: Avenir;
 }
 
 #container-2 {
@@ -17,17 +17,28 @@
 }
 
 .block-2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 200px;
-    padding: 10px;
-    border: 1px solid black;
-    font-family: Helvetica;
+    padding: 25px;
+    margin-left: 1vw;
+    font: 18px Avenir;
+    color: white;
+    text-align: center;
 }
 
 #block-2 {
     opacity: 0;
+    background-color: #E91E63;
 }
 
-#block-3,
+#block-3 {
+  opacity: 0;
+  background-color: #FF9800;
+}
+
 #block-4 {
     opacity: 0;
+    background-color: #8BC34A;
 }
