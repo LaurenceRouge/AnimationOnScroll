@@ -1,49 +1,36 @@
 /* @flow */
 
-const elements = [
-  {
-    targets: '#container-1 #block-1',
-    animation: 'slideDown',
-    options: {
-      duration: 1000,
-      easing: 'easeOutSine',
-      translate: 25,
-    },
-  },
-  {
-    targets: '#container-2 #block-2',
-    animation: 'fadeIn',
-    options: {
-      delay: 450,
-      duration: 1050,
-      easing: 'easeInQuad',
-      offset: 700,
-    },
-  },
-  {
-    targets: '#container-2 #block-3',
-    animation: 'fadeIn',
-    options: {
-      delay: 450,
-      duration: 1050,
-      easing: 'easeInQuart',
-      offset: 700,
-    },
-  },
-  {
-    targets: '#container-2 #block-4',
-    animation: 'fadeIn',
-    options: {
-      delay: 450,
-      duration: 1350,
-      easing: 'easeInQuart',
-      offset: 700,
-    },
-  },
-]
+const amazination = new Amazination
 
-const animation = new Amazination
+const homeText = {
+  targets: '#container-1 #block-1',
+  animation: 'slideDown',
+  options: {
+    delay: 300,
+    duration: 1000,
+    easing: 'easeOutSine',
+    translate: 25,
+  },
+}
 
-elements.map((element) => {
-  animation.run(element.targets, element.animation, element.options)
-})
+amazination.run(homeText.targets, homeText.animation, homeText.options)
+
+/************************************************************************************/
+
+const cardsAnimationBlocks = {
+  container: '#container-2',
+  elements: ['#block-2', '#block-3', '#block-4'],
+}
+
+const cardsAnimationParameters = {
+  animation: 'fadeIn',
+  options: {
+    delay: 250,
+    duration: 1000,
+    easing: 'easeInQuad',
+    frequency: 150,
+    offset: 700,
+  },
+}
+
+amazination.timeline(cardsAnimationBlocks, cardsAnimationParameters)

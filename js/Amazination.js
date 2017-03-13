@@ -4,6 +4,7 @@ type AnimationOptions = null | {
   delay?: number,
   duration?: number,
   easing?: string,
+  frequency?: number,
   offset?: 'bottom-in-view' | number | string | Function,
   opacity?: number,
   scale?: number,
@@ -12,13 +13,23 @@ type AnimationOptions = null | {
 
 type AnimationType = 'fadeIn' | 'fadeOut' | 'slideLeft' | 'slideRight' | 'scale'
 
+type TimelineElements = {
+  container: string,
+  elements: Array<string>,
+}
+
+type TimelineParameters = {
+  animation: AnimationType,
+  options: AnimationOptions,
+}
+
 class Amazination {
   renderAnimation(elements: string, animation: AnimationType, options: AnimationOptions) {
     const parameters = {
-      default: {
-        delay: options.delay || 0,
-        duration: options.duration || 300,
-        easing: options.easing || 'linear',
+      timing: {
+        delay: options && options.delay || 0,
+        duration: options && options.duration || 300,
+        easing: options && options.easing || 'linear',
       },
       ...options,
     }
@@ -38,6 +49,18 @@ class Amazination {
     }
   }
 
+  renderTimeline(blocks: TimelineElements, parameters: TimelineParameters) {
+    const { container, elements } = blocks
+    const { animation, options: { delay, frequency } } = parameters
+
+    elements.map((element, index) => {
+      const options = { ...parameters.options, delay: delay + (frequency * index)}
+      setTimeout(() => {
+        this.renderAnimation(`${container} ${element}`, animation, options)
+      }, options.delay)
+    })
+  }
+
   run(elements: string, animation: AnimationType, options: AnimationOptions) {
     const container = elements.split(' ')[0]
 
@@ -45,6 +68,16 @@ class Amazination {
       element: document.querySelector(`${container}`),
       handler: () => { this.renderAnimation(elements, animation, options) },
       offset: options && options.offset,
+    })
+  }
+
+  timeline(blocks: TimelineElements, parameters: TimelineParameters) {
+    const { container } = blocks
+
+    return new Waypoint({
+      element: document.querySelector(`${container}`),
+      handler: () => { this.renderTimeline(blocks, parameters) },
+      offset: (parameters && parameters.options) && parameters.options.offset,
     })
   }
 }
