@@ -1,6 +1,6 @@
-# AnimationOnScroll 🌈
+# AnimeOnScroll 🌈
 
-`AnimationOnScroll` is an ES2017 playground for JavaScript animations with TweenMax and ScrollMagic! Feel free to contribute to the awesomeness!
+`AnimeOnScroll` is an ES2017 playground for JavaScript animations with Anime.js and Waypoints! Feel free to contribute to the awesomeness!
 
 ## Requirements
 - [Yarn](https://yarnpkg.com/lang/en/) a node dependencies manager
@@ -12,8 +12,9 @@
 ## Make the magic happen
 Just clone the repo and start :
 ```shell
-https://github.com/LaurenceRouge/AnimationOnScroll.git
-$ cd AnimationOnScroll
+https://github.com/LaurenceRouge/AnimationOnScroll.git AnimeOnScroll
+$ cd AnimeOnScroll
+$ git checkout waypoints
 $ yarn                  # Install Node.js components listed in your package.json with Yarn 😺
 $ yarn start            # Let's make some magic!
 ```
